@@ -4,13 +4,15 @@ import matplotlib.pyplot as plt
 from collections import Counter
 
 def fetch_webpage():
-    url = "https://en.wikipedia.org/wiki/University_of_Calgary"
+    # Comment out if not required
+    # use any url but as required by this lab copy and paste this url:https://en.wikipedia.org/wiki/University_of_Calgary
+    url = input("Enter a Url to work with:")
     try:
         response = requests.get(url, timeout=10)
         response.raise_for_status()
         soup = BeautifulSoup(response.text, 'html.parser')
         print(f"Successfully fetched content from {url}")
-        return soup
+        return soup         # using the Soup as variable to fetch the entire html documents.
     except Exception as e:
         print(f"Error fetching content: {e}")
         return None
@@ -18,7 +20,7 @@ def fetch_webpage():
 def analyze_elements(soup):
     headings = 0
     for i in range(1, 7):
-        headings = headings + len(soup.find_all(f'h{i}'))
+        headings = headings + len(soup.find_all(f'h{i}')) # using it as h(i): h1,h2,h3,h4,h5,h6
 
     links = len(soup.find_all('a'))
     paragraphs = len(soup.find_all('p'))
@@ -35,7 +37,7 @@ def keyword_analysis(soup):
     text = soup.get_text().lower()
     count = text.count(keyword)
     print(f"\nKeyword Analysis:")
-    print(f"'{keyword}' appears {count} times in the webpage content")
+    print(f"Number of counts for the {keyword}: {count}")
 
 def word_frequency(soup):
     text = soup.get_text()
@@ -66,8 +68,8 @@ def find_longest_paragraph(soup):
 def visualize_results(headings, links, paragraphs):
     labels = ['Headings', 'Links', 'Paragraphs']
     values = [headings, links, paragraphs]
-    
-    plt.bar(labels, values)
+   
+    plt.bar(labels, values, color = 'violet' ) # changed colour for the bar.
     plt.title('Group # 48 ')  
     plt.ylabel('Count')
     plt.show()
