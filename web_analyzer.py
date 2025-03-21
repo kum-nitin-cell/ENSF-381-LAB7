@@ -85,7 +85,7 @@ def main():
     if soup:
         # printing the entire html structure.
         # can be comment out to display the entire structure of the html page
-        #print(soup.prettify())
+        # print(soup.prettify())
         
         # retrieving headings, links, paragragh using the function below
         headings, links, paragraphs = analyze_elements(soup)
