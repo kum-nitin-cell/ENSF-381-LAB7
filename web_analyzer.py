@@ -63,16 +63,19 @@ def find_longest_paragraph(soup):
     
     print("\nLongest Paragraph Analysis:")
     print(f"Word count: {max_words}")
-    # source: https://www.geeksforgeeks.org/python-program-to-count-words-in-a-sentence/
-    # keeping the paragaraph short as 100 length words max 
-    # remove the [:100], it will give you the entire paragraph.
+    """
+    source: https://www.geeksforgeeks.org/python-program-to-count-words-in-a-sentence/
+    keeping the paragaraph short as 100 length words max 
+    remove the [:100], it will give you the entire paragraph.
+
+    """
     print(f"Content: {longest_para[:100]}..." if len(longest_para) > 100 else longest_para)
 
 def visualize_results(headings, links, paragraphs):
     labels = ['Headings', 'Links', 'Paragraphs']
     values = [headings, links, paragraphs]
    
-    plt.bar(labels, values, color = 'violet' ) # changed colour for the bar.
+    plt.bar(labels, values, color = 'darkblue' ) # changed colour for the bar.
     plt.title('Group # 48 ')  
     plt.ylabel('Count')
     plt.show()
